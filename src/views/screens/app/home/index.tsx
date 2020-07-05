@@ -1,5 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, Image, Switch, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Switch,
+  FlatList,
+  TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import {CheckBox, Button, Icon} from 'react-native-elements';
 import {Images} from '@assets';
 import {Metrics, Colors} from '@shared';
@@ -7,6 +16,7 @@ import {MainHeader} from '@components';
 import {listDevices} from '@services';
 import {styles} from './styles';
 import Modal from 'react-native-modal';
+import ProgressCircle from 'react-native-progress-circle';
 
 export interface Devices {
   id: string;
@@ -20,7 +30,7 @@ export const HomeScreen = () => {
   const [listData, setListData] = useState(listDevices);
   const [checked, setChecked] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
-
+  const [timeStart, setTimeStart] = useState('');
   const toggleSwitch = () => {
     setIsEnabled((previousState) => !previousState);
     setChecked(!checked);
@@ -57,30 +67,49 @@ export const HomeScreen = () => {
   const renderModal = () => {
     return (
       <Modal isVisible={isModalVisible}>
-        <View
-          style={{
-            padding: Metrics.spacing.large,
-            backgroundColor: Colors.White,
-            borderRadius: 10,
-            justifyContent: 'center',
-          }}>
-          <View style={{flexDirection: 'row'}}>
-            <Icon
-              name={'close'}
-              color={'#848484'}
-              onPress={() => setModalVisible(!isModalVisible)}
-            />
-            <Text
-              style={{
-                fontSize: Metrics.FontSize.h6,
-                color: Colors.Primary,
-                textAlign: 'center',
-                flex:1
-              }}>
-              {'Block Devices'}
-            </Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View
+            style={{
+              padding: Metrics.spacing.large,
+              backgroundColor: Colors.White,
+              borderRadius: 10,
+              justifyContent: 'center',
+            }}>
+            <View style={{flexDirection: 'row'}}>
+              <Icon
+                name={'close'}
+                color={'#848484'}
+                onPress={() => setModalVisible(!isModalVisible)}
+              />
+              <Text
+                style={{
+                  fontSize: Metrics.FontSize.h6,
+                  color: Colors.Primary,
+                  textAlign: 'center',
+                  flex: 1,
+                }}>
+                {'Block Devices'}
+              </Text>
+            </View>
+            <ProgressCircle
+              percent={parseInt(timeStart) / 0.12}
+              radius={50}
+              borderWidth={8}
+              color={Colors.Primary}
+              shadowColor="#999"
+              bgColor="#fff">
+              <View
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <TextInput
+                  value={timeStart}
+                  onChangeText={(value) => setTimeStart(value)}
+                  style={{width: 25, color: Colors.Primary}}
+                />
+                <Text style={{color: Colors.Primary}}>HOUR</Text>
+              </View>
+            </ProgressCircle>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
     );
   };
