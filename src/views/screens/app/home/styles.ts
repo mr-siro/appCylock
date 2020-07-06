@@ -23,5 +23,27 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: Colors.Button.BackgroundGreen,
   },
+
+  modalContainer:{
+  padding: Metrics.spacing.large,
+  backgroundColor: Colors.White,
+  borderRadius: 15,
+  justifyContent: 'center',
+},
+
+labelContainer:{
+  borderBottomColor: Colors.Text.textAcient,
+  borderBottomWidth: 0.5,
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  paddingVertical: Metrics.spacing.medium,
+},
+
+blockedDevice:{
+  fontSize: Metrics.FontSize.h6,
+  color: Colors.Primary,
+  textAlign: 'center',
+  flex: 1,
+}
 });
 export {styles};
