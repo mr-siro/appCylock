@@ -18,7 +18,6 @@ export const BottomTabsNavigator = (): React.ReactElement => {
         tabBarOptions={{
           activeTintColor: Colors.tabBar.Active,
           showLabel: false,
-          tabStyle: styles.barStyle,
         }}>
         <BottomTab.Screen
           name={AppRoute.HOMESCREEN}
