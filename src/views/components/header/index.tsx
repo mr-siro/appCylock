@@ -4,7 +4,8 @@ import {
   Text,
   ImageBackground,
   Image,
-  Dimensions
+  Dimensions,
+  Platform,
 } from 'react-native';
 import {Header} from 'react-native-elements';
 import {Images} from '@assets';
@@ -23,7 +24,10 @@ export const MainHeader = (props: HeaderProps) => {
       source={Images.HeaderBackground}
       style={{
         width: '100%',
-        height: (Dimensions.get('window').height * 3) / 8,
+        height:
+          Platform.OS === 'ios'
+            ? (Dimensions.get('window').width * 13) / 16
+            : (Dimensions.get('window').width * 12) / 16,
       }}
       resizeMode={'cover'}>
       <Header

@@ -8,7 +8,6 @@ import {
   NavigationState,
 } from 'react-native-tab-view';
 import {Header, Button} from 'react-native-elements';
-import ProgressCircle from 'react-native-progress-circle';
 import {Metrics, Colors} from '@shared';
 
 const initialLayout = {width: Dimensions.get('window').width};
@@ -52,7 +51,7 @@ export const SettingScreen = () => {
   );
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Header />
       <TabView
         navigationState={{index, routes}}
@@ -61,45 +60,6 @@ export const SettingScreen = () => {
         initialLayout={initialLayout}
         renderTabBar={renderTabBar}
       />
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          borderRadius: 30,
-          backgroundColor: Colors.Primary,
-          width: 53,
-          justifyContent: 'space-between',
-          height: 20,
-        }}>
-        <Button
-          title={isActive == false ? 'Off' : ''}
-          titleStyle={{textAlign: 'center', fontSize: 7}}
-          onPress={() => setIsActive(false)}
-          style={{borderRadius: 0}}
-          buttonStyle={{
-            backgroundColor:
-              isActive == false ? Colors.Button.BackgroundBlue : Colors.Primary,
-            borderRadius: 150,
-
-            width: 26,
-            height: isActive == false ? 26 : 20,
-          }}
-        />
-        <Button
-          title={isActive == true ? 'On' : ''}
-          titleStyle={{textAlign: 'center', fontSize: 7}}
-          onPress={() => setIsActive(true)}
-          style={{borderRadius: 0}}
-          buttonStyle={{
-            backgroundColor:
-              isActive == false ? Colors.Primary : Colors.Button.BackgroundBlue,
-            borderRadius: 150,
-
-            width: 26,
-            height: isActive == true ? 26 : 20,
-          }}
-        />
-      </View>
     </View>
   );
 };

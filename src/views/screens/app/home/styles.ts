@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: Metrics.spacing.large,
+    paddingVertical: Metrics.spacing.huge,
   },
 
   buttonStyle: {
@@ -24,26 +24,32 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Button.BackgroundGreen,
   },
 
-  modalContainer:{
-  padding: Metrics.spacing.large,
-  backgroundColor: Colors.White,
-  borderRadius: 15,
-  justifyContent: 'center',
-},
+  modalContainer: {
+    padding: Metrics.spacing.large,
+    backgroundColor: Colors.White,
+    borderRadius: 15,
+    justifyContent: 'center',
+  },
 
-labelContainer:{
-  borderBottomColor: Colors.Text.textAcient,
-  borderBottomWidth: 0.5,
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  paddingVertical: Metrics.spacing.medium,
-},
+  labelContainer: {
+    borderBottomColor: Colors.Text.textAcient,
+    borderBottomWidth: 0.5,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: Metrics.spacing.medium,
+  },
 
-blockedDevice:{
-  fontSize: Metrics.FontSize.h6,
-  color: Colors.Primary,
-  textAlign: 'center',
-  flex: 1,
-}
+  blockedDevice: {
+    fontSize: Metrics.FontSize.h6,
+    color: Colors.Primary,
+    textAlign: 'center',
+    flex: 1,
+  },
+
+  loadingStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: Metrics.spacing.medium,
+  },
 });
 export {styles};
